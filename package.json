@@ -1,0 +1,10 @@
+{
+  "name": "project-mathai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "北京应用数学研究院 数学与人工智能学院官网前端原型",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}

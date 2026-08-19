@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="北京应用数学研究院 数学与人工智能学院官网前端原型" />
+  <title>数学与人工智能学院｜北京应用数学研究院</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="返回首页">
+      <img src="./assets/mark.svg" alt="数学与人工智能学院标识" />
+      <span class="brand-copy">
+        <strong>数学与人工智能学院</strong>
+        <small>北京应用数学研究院</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="主导航">
+      <a href="#about">走进学院</a>
+      <a href="#research">科研学部</a>
+      <a href="#education">学生培养</a>
+      <a href="#events">学术活动</a>
+      <a href="#news">学院资讯</a>
+      <a href="#join">招贤纳士</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="text-btn" id="langBtn" type="button" aria-label="切换语言">EN</button>
+      <button class="search-btn" id="searchBtn" type="button" aria-label="打开搜索">
+        <span></span><span></span>
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">×</button>
+    <div class="search-inner">
+      <p>SEARCH</p>
+      <label for="siteSearch">站内搜索</label>
+      <div class="search-line">
+        <input id="siteSearch" type="search" placeholder="您想搜索什么？" />
+        <button type="button" id="searchSubmit">搜索</button>
+      </div>
+      <small id="searchHint">可搜索：学院、人工智能、课程、活动、招生</small>
+    </div>
+  </div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav aria-label="移动端主导航">
+      <a href="#about"><span>01</span>走进学院</a>
+      <a href="#research"><span>02</span>科研学部</a>
+      <a href="#education"><span>03</span>学生培养</a>
+      <a href="#events"><span>04</span>学术活动</a>
+      <a href="#news"><span>05</span>学院资讯</a>
+      <a href="#join"><span>06</span>招贤纳士</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="hero" aria-label="学院首屏">
+      <img class="hero-image" src="https://bimsa.net/imsc/img/album/1_5.jpg" alt="雁栖湖园区航拍" />
+      <div class="hero-grid"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">SCHOOL OF MATHEMATICS & ARTIFICIAL INTELLIGENCE</p>
+        <h1>数学塑造智能<br />智能拓展数学</h1>
+        <p class="hero-copy">面向数学基础、人工智能、科学计算与交叉应用，探索下一代智能科学的理论与方法。</p>
+        <a class="hero-link" href="#about">了解学院 <span>↗</span></a>
+      </div>
+      <div class="hero-footer">
+        <span>BEIJING · YANQI LAKE</span>
+        <a href="#about">SCROLL TO EXPLORE ↓</a>
+      </div>
+    </section>
+
+    <section class="about section-pad" id="about">
+      <div class="section-kicker reveal">ABOUT / 走进学院</div>
+      <div class="about-grid">
+        <div class="about-title reveal">
+          <h2>北京应用数学研究院<br />数学与人工智能学院</h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>学院以数学基础与人工智能前沿的深度融合为核心，面向算法理论、机器学习、科学智能、概率统计、数值计算与复杂系统等方向开展人才培养与科研协作。</p>
+          <p>依托研究院的国际化学术环境，强调基础理论、交叉研究与真实问题驱动，让数学成为智能系统的结构语言，让人工智能成为数学研究的新型工具。</p>
+          <a class="line-link" href="#research">了解更多 <span>→</span></a>
+        </div>
+      </div>
+      <figure class="about-image reveal">
+        <img src="https://bimsa.net/img/bimsa/bimsa_07.jpg" alt="北京雁栖湖应用数学研究院园区建筑" loading="lazy" />
+        <figcaption>YANQI LAKE · ACADEMIC CAMPUS</figcaption>
+      </figure>
+    </section>
+
+    <section class="research section-pad" id="research">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">RESEARCH / 科研学部</div>
+          <h2>从数学基础到智能系统</h2>
+        </div>
+        <p>三类研究方向覆盖理论、模型与科学应用，形成相互连接的研究生态。</p>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-card reveal" data-index="01">
+          <div class="card-art art-math">
+            <span>∑</span><span>∂</span><span>∞</span><span>π</span>
+          </div>
+          <div class="card-body">
+            <span class="card-num">01</span>
+            <h3>数学基础</h3>
+            <p>概率与统计、优化、偏微分方程、几何与代数，为智能算法建立可解释、可验证的理论底座。</p>
+            <a href="#events">探索方向 →</a>
+          </div>
+        </article>
+
+        <article class="research-card featured reveal" data-index="02">
+          <div class="card-art art-ai">
+            <div class="nodes" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">02</span>
+            <h3>人工智能</h3>
+            <p>机器学习、基础模型、智能体与学习理论，研究高效、可靠并具有推理能力的下一代智能系统。</p>
+            <a href="#events">探索方向 →</a>
+          </div>
+        </article>
+
+        <article class="research-card reveal" data-index="03">
+          <div class="card-art art-science">
+            <div class="orbit"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">03</span>
+            <h3>科学智能</h3>
+            <p>面向物理、材料、生命与复杂系统，将数据驱动方法与数学建模、数值计算、多尺度方法协同起来。</p>
+            <a href="#events">探索方向 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="education-band" id="education">
+      <img class="education-image" src="https://bimsa.net/img/bimsa/bimsa_07.jpg" alt="" aria-hidden="true" />
+      <div class="education-content section-pad reveal">
+        <div class="section-kicker light">EDUCATION / 学生培养</div>
+        <h2>以研究问题组织学习，<br />以数学训练建立长期能力。</h2>
+        <div class="edu-columns">
+          <p>课程模块覆盖数学基础、计算方法、机器学习与科研训练；鼓励学生尽早进入研究组、研讨班和项目制学习。</p>
+          <div class="edu-links">
+            <a href="#events">学院课程 <span>↗</span></a>
+            <a href="#events">科研训练 <span>↗</span></a>
+            <a href="#join">招生信息 <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="events section-pad" id="events">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">CALENDAR / 学院日历</div>
+          <h2>近期学术活动</h2>
+        </div>
+        <a class="line-link" href="https://www.bimsa.cn/" target="_blank" rel="noreferrer">查看研究院日历 <span>↗</span></a>
+      </div>
+
+      <div class="event-list reveal">
+        <article class="event-row">
+          <div class="event-date"><strong>24</strong><span>AUG</span></div>
+          <div class="event-type">课程</div>
+          <div class="event-info"><h3>Riemann Surfaces</h3><p>黎曼曲面专题课程</p></div>
+          <div class="event-meta"><span>Yanqi Lake</span><span>2026</span></div>
+          <span class="event-arrow">↗</span>
+        </article>
+        <article class="event-row">
+          <div class="event-date"><strong>24</strong><span>AUG</span></div>
+          <div class="event-type">Workshop</div>
+          <div class="event-info"><h3>Quantum Theory and Operator Theory 2026</h3><p>量子理论与算子理论研讨会</p></div>
+          <div class="event-meta"><span>BIMSA</span><span>2026</span></div>
+          <span class="event-arrow">↗</span>
+        </article>
+        <article class="event-row">
+          <div class="event-date"><strong>31</strong><span>AUG</span></div>
+          <div class="event-type">课程</div>
+          <div class="event-info"><h3>Information, Networks, and Knowledge Production</h3><p>信息、网络与知识生产</p></div>
+          <div class="event-meta"><span>Yanqi Lake</span><span>2026</span></div>
+          <span class="event-arrow">↗</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="news section-pad" id="news">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">NEWS / 学院资讯</div>
+          <h2>正在发生</h2>
+        </div>
+        <div class="news-tabs" role="tablist" aria-label="资讯分类">
+          <button class="active" data-filter="all" role="tab">全部</button>
+          <button data-filter="research" role="tab">科研</button>
+          <button data-filter="activity" role="tab">活动</button>
+        </div>
+      </div>
+
+      <div class="news-layout">
+        <a class="news-feature reveal" href="https://www.bimsa.cn/" target="_blank" rel="noreferrer" data-category="research">
+          <img src="https://bimsa.net/imsc/img/album/1_5.jpg" alt="雁栖湖园区航拍" loading="lazy" />
+          <div class="news-feature-copy">
+            <span>2026.06.10 · 科研</span>
+            <h3>从 Scaling 走向数据高效的 Agentic Learning：探索智能体学习的新研究框架</h3>
+            <p>围绕数据效率、智能体学习与人工智能基础研究，连接理论问题与可计算实验。</p>
+          </div>
+        </a>
+
+        <div class="news-list reveal">
+          <a href="https://www.bimsa.cn/" target="_blank" rel="noreferrer" data-category="research">
+            <span class="news-date">2026.06.25</span>
+            <strong>当材料科学遇见数学：如何理解复杂材料</strong>
+            <em>科研</em>
+          </a>
+          <a href="https://www.bimsa.cn/" target="_blank" rel="noreferrer" data-category="research">
+            <span class="news-date">2026.06.22</span>
+            <strong>BIMSA 团队在国际数学期刊发表两项重要研究成果</strong>
+            <em>科研</em>
+          </a>
+          <a href="https://www.bimsa.cn/" target="_blank" rel="noreferrer" data-category="activity">
+            <span class="news-date">2026.05.26</span>
+            <strong>Beijing Journal of Pure and Applied Mathematics 新一期发布</strong>
+            <em>活动</em>
+          </a>
+          <a href="https://www.bimsa.cn/" target="_blank" rel="noreferrer" data-category="activity">
+            <span class="news-date">2026.04.24</span>
+            <strong>第四届理论物理与新技术国际会议</strong>
+            <em>活动</em>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="quote-grid"></div>
+      <div class="quote-inner reveal">
+        <p>MATHEMATICS × ARTIFICIAL INTELLIGENCE</p>
+        <h2>以数学理解世界<br />以智能扩展可能</h2>
+        <span>From rigorous foundations to intelligent discovery.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="join">
+    <div class="footer-top section-pad">
+      <div class="footer-brand reveal">
+        <img src="./assets/mark.svg" alt="数学与人工智能学院标识" />
+        <div>
+          <strong>数学与人工智能学院</strong>
+          <span>北京应用数学研究院</span>
+        </div>
+      </div>
+      <div class="footer-contact reveal">
+        <p>北京市怀柔区河防口村 544 号</p>
+        <p>010-60661855</p>
+        <p>administration@bimsa.cn</p>
+      </div>
+    </div>
+
+    <div class="footer-links section-pad reveal">
+      <div><strong>走进学院</strong><a href="#about">学院概况</a><a href="#research">研究方向</a><a href="#join">联系我们</a></div>
+      <div><strong>科研学术</strong><a href="#research">科研学部</a><a href="#events">学术活动</a><a href="https://www.bimsa.cn/" target="_blank" rel="noreferrer">研究院官网</a></div>
+      <div><strong>学生培养</strong><a href="#education">培养体系</a><a href="#events">学院课程</a><a href="#join">招生信息</a></div>
+      <div><strong>加入我们</strong><a href="#join">教师岗位</a><a href="#join">博士后</a><a href="#join">学生项目</a></div>
+    </div>
+
+    <div class="footer-bottom section-pad">
+      <span>© 2026 School of Mathematics & Artificial Intelligence</span>
+      <span>Frontend prototype · Content to be verified before official publication</span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>

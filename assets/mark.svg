@@ -1,5 +1,4 @@
-<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="80" height="80" rx="16" fill="#0B2A72"/>
-  <path d="M18 57V23H27.2L40 42.2L52.8 23H62V57H52V38.7L40 56L28 38.7V57H18Z" fill="white"/>
-  <circle cx="61" cy="19" r="5" fill="#6ED0FF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="330 210 600 840" role="img" aria-label="数学与人工智能学院院标">
+  <path fill="#000" d="M460 661L358 1018L467 1017L522 812L582 1017L673 1018L734 811L790 1018L899 1018L795 660L677 660L631 828L623 826L579 660Z"/>
+  <path fill="#000" d="M583 238L479 596L579 596L625 428L633 430L677 596L777 596L674 239Z"/>
 </svg>

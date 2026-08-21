@@ -1,5 +1,20 @@
 /* Shared navigation + inner-page architecture */
 
+/* New academy mark: black on light surfaces, white on dark hero/footer surfaces. */
+.brand img,
+.footer-brand img {
+  object-fit:contain;
+}
+.site-header:not(.scrolled) .brand img {
+  filter:invert(1);
+}
+.site-header.scrolled .brand img {
+  filter:none;
+}
+.footer-brand img {
+  filter:invert(1);
+}
+
 .desktop-nav.nav-mega {
   display:flex;
   align-items:stretch;

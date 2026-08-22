@@ -1,0 +1,80 @@
+/* Organization structure page */
+body.org-page{background:#f7fafc}
+body.org-page .site-header{position:absolute;background:rgba(19,35,48,.88);backdrop-filter:blur(16px);border-bottom-color:rgba(255,255,255,.16);color:#fff}
+body.org-page .site-header.scrolled{position:fixed;background:rgba(255,255,255,.96);color:#101418;border-color:#dfe3e8}
+body.org-page .brand-copy small{letter-spacing:.06em;white-space:nowrap}
+
+.org-page-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#eef6fa 0%,#f9fbfc 48%,#edf6fb 100%);border-bottom:1px solid #e1e8ed}
+.org-page-hero::after{content:"";position:absolute;right:-12vw;top:-18vw;width:58vw;height:58vw;border-radius:50%;background:radial-gradient(circle,rgba(85,184,223,.12),rgba(85,184,223,0) 68%);pointer-events:none}
+.org-hero-inner{position:relative;z-index:1;max-width:var(--max);margin:auto;padding:170px var(--pad) 74px;display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:end}
+.org-overline{margin:0 0 18px;color:#266892;font-size:10px;font-weight:700;letter-spacing:.23em}
+.org-hero-inner h1{margin:0;color:#142a3b;font-size:clamp(56px,7vw,106px);line-height:.92;font-weight:520;letter-spacing:-.06em}
+.org-hero-copy{padding-bottom:7px}
+.org-hero-copy .en-title{display:block;margin-bottom:18px;color:#2f7ba8;font-size:10px;font-weight:700;letter-spacing:.22em}
+.org-hero-copy p{max-width:620px;margin:0;color:#687b88;font-size:14px;line-height:1.9}
+
+.org-chart-section{padding:74px var(--pad) 120px;background:linear-gradient(180deg,#fbfdfe 0,#f6fafc 48%,#fff 100%)}
+.org-chart{max-width:1500px;margin:auto}
+.org-stage{display:flex;flex-direction:column;align-items:center}
+.org-vline{width:1px;height:52px;background:#86c8e7}
+.org-vline.long{height:68px}
+.org-person{text-align:center;min-width:118px}
+.org-person h2,.org-person h3{margin:15px 0 4px;color:#193246;font-weight:600;letter-spacing:-.02em}
+.org-person h2{font-size:25px}.org-person h3{font-size:17px}
+.org-person p{margin:0;color:#6193ad;font-size:10px;letter-spacing:.13em}
+.org-person--hero .org-avatar{width:150px;height:150px}
+.org-person--dean .org-avatar{width:132px;height:132px}
+.org-person--hero h2{font-size:28px}
+.org-person--dean h2{font-size:25px}
+
+.org-avatar{position:relative;width:102px;height:102px;margin:0 auto;border-radius:50%;padding:6px;background:#fff;border:1px solid #cfe3ee;box-shadow:0 12px 35px rgba(38,92,122,.12)}
+.org-avatar img,.org-avatar-fallback{width:100%;height:100%;border-radius:50%}
+.org-avatar img{display:block;object-fit:cover;object-position:center;background:#e9f0f4}
+.org-avatar-fallback{display:grid;place-items:center;background:linear-gradient(145deg,#173d56,#0d2c42);color:#99e4ff;font-family:Georgia,"Songti SC",serif;font-size:30px;font-weight:500}
+.org-avatar-fallback[hidden]{display:none}
+
+.org-admin-tree{width:100%;max-width:1240px;position:relative;margin-top:0;padding-top:42px}
+.org-admin-tree::before{content:"";position:absolute;left:8.33%;right:8.33%;top:0;height:1px;background:#86c8e7}
+.org-admin-grid{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:18px}
+.org-admin-node{position:relative;padding-top:28px}
+.org-admin-node::before{content:"";position:absolute;top:-42px;left:50%;width:1px;height:43px;background:#86c8e7}
+.org-admin-node::after{content:"";position:absolute;top:-43px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;border:1px solid #86c8e7;background:#f8fcfe}
+
+.faculty-block{max-width:1440px;margin:92px auto 0;padding-top:42px;border-top:1px solid #dbe7ed}
+.faculty-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:34px}
+.faculty-heading small{display:block;margin-bottom:10px;color:#2d82ad;font-size:10px;font-weight:700;letter-spacing:.2em}
+.faculty-heading h2{margin:0;color:#173144;font-size:clamp(34px,4vw,52px);font-weight:520;letter-spacing:-.04em}
+.faculty-heading p{max-width:520px;margin:0;color:#7a8992;font-size:12px;line-height:1.8;text-align:right}
+.faculty-grid{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:30px 18px}
+.faculty-card{padding:6px 4px 12px;text-align:center}
+.faculty-card .org-avatar{width:96px;height:96px}
+.faculty-card h3{margin:13px 0 4px;color:#20394a;font-size:16px;font-weight:600}
+.faculty-card p{margin:0;color:#8aa0ad;font-size:9px;letter-spacing:.14em}
+
+.org-source-note{max-width:1440px;margin:58px auto 0;padding:16px 18px;border-left:2px solid #5eb5db;background:#f0f7fa;color:#758691;font-size:11px;line-height:1.75}
+
+body.org-page .site-footer .footer-contact{display:flex;flex-direction:column;gap:5px}
+body.org-page .site-footer .footer-contact a{color:#a2a8af}
+body.org-page .site-footer .footer-contact a:hover{color:#fff}
+
+@media(max-width:1180px){
+  .org-admin-tree{overflow-x:auto;padding-bottom:18px}
+  .org-admin-tree::before{left:72px;right:auto;width:970px}
+  .org-admin-grid{min-width:1100px}
+  .faculty-grid{grid-template-columns:repeat(5,minmax(120px,1fr))}
+}
+@media(max-width:900px){
+  .org-hero-inner{grid-template-columns:1fr;gap:34px;padding-top:145px}
+  .org-hero-copy{padding-bottom:0}
+  .faculty-heading{display:block}
+  .faculty-heading p{margin-top:16px;text-align:left}
+  .faculty-grid{grid-template-columns:repeat(3,minmax(110px,1fr))}
+}
+@media(max-width:620px){
+  .org-chart-section{padding-top:54px;padding-bottom:80px}
+  .org-page-hero .org-hero-inner{padding-top:128px;padding-bottom:54px}
+  .org-person--hero .org-avatar{width:128px;height:128px}
+  .org-person--dean .org-avatar{width:116px;height:116px}
+  .faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .faculty-card .org-avatar{width:88px;height:88px}
+}

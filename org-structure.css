@@ -52,6 +52,9 @@ body.org-page .brand-copy small{letter-spacing:.06em;white-space:nowrap}
 .faculty-card h3{margin:13px 0 4px;color:#20394a;font-size:16px;font-weight:600}
 .faculty-card p{margin:0;color:#8aa0ad;font-size:9px;letter-spacing:.14em}
 
+/* Su Weidong: use the freshly embedded local portrait and bypass stale/broken image caches. */
+.faculty-grid .faculty-card:nth-child(10) .org-avatar::after{content:"";position:absolute;inset:6px;z-index:5;border-radius:50%;background:#e9f0f4 url('./assets/people/su-weidong-fresh.svg') center/cover no-repeat}
+
 .org-source-note{max-width:1440px;margin:58px auto 0;padding:16px 18px;border-left:2px solid #5eb5db;background:#f0f7fa;color:#758691;font-size:11px;line-height:1.75}
 
 body.org-page .site-footer .footer-contact{display:flex;flex-direction:column;gap:5px}

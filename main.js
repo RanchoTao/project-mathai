@@ -1,3 +1,50 @@
+const SITE_IDENTITY = {
+  instituteName: '北京雁栖湖应用数学研究院',
+  collegeEmail: 'mathai@bimsa.cn'
+};
+
+const normalizeSiteIdentity = () => {
+  const replaceIdentity = (value = '') => value
+    .replaceAll('北京应用数学研究院', SITE_IDENTITY.instituteName)
+    .replaceAll('北京应用数学院', SITE_IDENTITY.instituteName)
+    .replaceAll('administration@bimsa.cn', SITE_IDENTITY.collegeEmail);
+
+  document.title = replaceIdentity(document.title);
+
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.setAttribute('content', replaceIdentity(description.getAttribute('content') || ''));
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach(node => {
+    const updated = replaceIdentity(node.nodeValue || '');
+    if (updated !== node.nodeValue) node.nodeValue = updated;
+  });
+
+  document.querySelectorAll('[href],[title],[aria-label],[alt]').forEach(el => {
+    ['href', 'title', 'aria-label', 'alt'].forEach(attr => {
+      if (!el.hasAttribute(attr)) return;
+      const value = el.getAttribute(attr) || '';
+      const updated = replaceIdentity(value);
+      if (updated !== value) el.setAttribute(attr, updated);
+    });
+  });
+
+  document.querySelectorAll('.brand-copy small,.footer-brand span').forEach(el => {
+    el.textContent = SITE_IDENTITY.instituteName;
+  });
+
+  document.querySelectorAll('.footer-contact a[href^="mailto:"]').forEach(a => {
+    if ((a.textContent || '').includes('administration@bimsa.cn') || a.getAttribute('href')?.includes('administration@bimsa.cn')) {
+      a.textContent = SITE_IDENTITY.collegeEmail;
+      a.href = `mailto:${SITE_IDENTITY.collegeEmail}`;
+    }
+  });
+};
+
+normalizeSiteIdentity();
+
 const header = document.querySelector('.site-header');
 const menuBtn = document.getElementById('menuBtn');
 const drawer = document.getElementById('mobileDrawer');
@@ -9,7 +56,6 @@ const searchSubmit = document.getElementById('searchSubmit');
 const searchHint = document.getElementById('searchHint');
 const langBtn = document.getElementById('langBtn');
 
-// Load the shared navigation / inner-page stylesheet without changing every legacy page.
 if (!document.querySelector('link[href$="nav.css"]')) {
   const navStyle = document.createElement('link');
   navStyle.rel = 'stylesheet';
@@ -109,7 +155,6 @@ if (mobileNav) {
     </div>`).join('');
 }
 
-// Make the logo reliably return to the site home from both home and inner pages.
 const brand = document.querySelector('.brand');
 if (brand) brand.setAttribute('href', './');
 

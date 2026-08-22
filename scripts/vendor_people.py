@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import pathlib
-import time
 import urllib.parse
 import urllib.request
 
@@ -14,23 +14,11 @@ OUT.mkdir(parents=True, exist_ok=True)
 # 苏伟栋使用用户提供的本地文件 assets/people/su-weidong.jpg，不再从网络抓取。
 PEOPLE = {
     "yau-shingtung.jpg": ["https://commons.wikimedia.org/wiki/Special:Redirect/file/Shing-Tung_Yau.jpg"],
-    "wu-rongling.jpg": [
-        "https://www.bimsa.cn/upload/img/avatar/rlwu_J1yxp.jpg",
-        "https://bimsa.net/img/people/IDPhoto/ronglingwu.jpg",
-    ],
-    "sun-mingming.jpeg": [
-        "https://www.bimsa.cn/upload/img/img/people/avatar_panel/MingmingSun_fM7cY.jpeg",
-        "https://bimsa.net/img/people/IDPhoto/mingmingsun.jpeg",
-    ],
-    "wang-zhong.jpg": [
-        "https://www.bimsa.cn/upload/img/avatar/zwang_90Aqr.jpg",
-        "https://ymsc.tsinghua.edu.cn/__local/8/00/6E/BC215CDFBEB96EC03832B2F72D9_F72C0096_15B13.jpg?e=.jpg",
-    ],
+    "wu-rongling.jpg": ["https://www.bimsa.cn/upload/img/avatar/rlwu_J1yxp.jpg", "https://bimsa.net/img/people/IDPhoto/ronglingwu.jpg"],
+    "sun-mingming.jpeg": ["https://www.bimsa.cn/upload/img/img/people/avatar_panel/MingmingSun_fM7cY.jpeg", "https://bimsa.net/img/people/IDPhoto/mingmingsun.jpeg"],
+    "wang-zhong.jpg": ["https://www.bimsa.cn/upload/img/avatar/zwang_90Aqr.jpg", "https://ymsc.tsinghua.edu.cn/__local/8/00/6E/BC215CDFBEB96EC03832B2F72D9_F72C0096_15B13.jpg?e=.jpg"],
     "wang-yaqing.jpg": ["https://www.bimsa.cn/upload/img/img/people/avatar_panel/YaqingWang_ufizi.JPG"],
-    "zhao-xin.png": [
-        "https://www.bimsa.cn/upload/img/img/people/avatar_panel/XinZhao_NRpBd.png",
-        "https://bimsa.net/img/people/IDPhoto/XinZhao.png?v=RrHMn",
-    ],
+    "zhao-xin.png": ["https://www.bimsa.cn/upload/img/img/people/avatar_panel/XinZhao_NRpBd.png", "https://bimsa.net/img/people/IDPhoto/XinZhao.png?v=RrHMn"],
     "shao-jiajia.jpg": ["https://www.bimsa.cn/upload/img/avatar/jshao_la1yq.jpg"],
     "wu-shuang.jpg": ["https://www.bimsa.cn/upload/img/img/people/avatar_panel/wushuang_tJdbV.jpg"],
     "li-jingyan.jpg": ["https://www.bimsa.cn/upload/img/img/people/avatar_panel/jingyanli_wiV3o.jpg"],
@@ -66,29 +54,22 @@ def fetch(url: str) -> bytes:
         "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
         "Referer": referer,
     })
-    with urllib.request.urlopen(req, timeout=35) as response:
+    with urllib.request.urlopen(req, timeout=10) as response:
         return response.read()
 
 
 def proxy_url(url: str) -> str:
     clean = url.removeprefix("https://").removeprefix("http://")
-    return "https://wsrv.nl/?" + urllib.parse.urlencode({
-        "url": clean,
-        "output": "jpg",
-        "w": "600",
-        "h": "600",
-        "fit": "cover",
-        "a": "attention",
-    })
+    return "https://wsrv.nl/?" + urllib.parse.urlencode({"url": clean, "output": "jpg", "w": "600", "h": "600", "fit": "cover", "a": "attention"})
 
 
-def vendor(name: str, sources: list[str]) -> bool:
+def vendor(name: str, sources: list[str]) -> tuple[str, bool]:
     target = OUT / name
-    candidates = []
-    for src in sources:
-        candidates.extend([src, proxy_url(src)])
+    candidates: list[str] = []
+    for source in sources:
+        candidates.extend([source, proxy_url(source)])
 
-    errors = []
+    errors: list[str] = []
     for url in candidates:
         try:
             data = fetch(url)
@@ -96,29 +77,28 @@ def vendor(name: str, sources: list[str]) -> bool:
                 raise ValueError(f"not an image ({len(data)} bytes)")
             target.write_bytes(data)
             print(f"[ok] {name} <- {url} ({len(data)} bytes)")
-            return True
+            return name, True
         except Exception as exc:
             errors.append(str(exc))
-            print(f"[retry] {name}: {url}: {exc}")
-            time.sleep(.5)
 
     if target.exists() and looks_like_image(target.read_bytes()):
         print(f"[keep] {name}: retaining existing local portrait")
-        return True
+        return name, True
 
     print(f"[missing] {name}: " + " | ".join(errors[-3:]))
-    return False
+    return name, False
 
 
 def main() -> None:
-    ok = 0
-    missing = []
-    for name, sources in PEOPLE.items():
-        if vendor(name, sources):
-            ok += 1
-        else:
-            missing.append(name)
-    print(f"Vendored {ok}/{len(PEOPLE)} network portraits.")
+    results: dict[str, bool] = {}
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = [pool.submit(vendor, name, sources) for name, sources in PEOPLE.items()]
+        for future in as_completed(futures):
+            name, ok = future.result()
+            results[name] = ok
+
+    missing = sorted(name for name, ok in results.items() if not ok)
+    print(f"Vendored {len(results) - len(missing)}/{len(PEOPLE)} network portraits.")
     if missing:
         print("Still missing: " + ", ".join(missing))
 

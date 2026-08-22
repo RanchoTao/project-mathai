@@ -1,0 +1,40 @@
+name: Vendor organization portraits
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/vendor_people.py'
+      - '.github/workflows/vendor-people.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download and vendor portraits
+        run: python scripts/vendor_people.py
+
+      - name: Commit vendored portraits
+        shell: bash
+        run: |
+          if git status --porcelain -- assets/people | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/people
+            git commit -m "chore: vendor organization portraits [skip ci]"
+            git push
+          else
+            echo "Portrait assets are already up to date."
+          fi

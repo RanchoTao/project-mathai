@@ -247,3 +247,64 @@ filterButtons.forEach(btn => btn.addEventListener('click', () => {
     item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
   });
 }));
+
+// Organization portraits are local-first. External URLs in the legacy HTML are kept only
+// as a temporary fallback while the one-time vendoring job populates assets/people.
+if (document.body.dataset.page === 'org-structure') {
+  const localPortraits = {
+    '丘成桐': './assets/people/yau-shingtung.jpg',
+    '邬荣领': './assets/people/wu-rongling.jpg',
+    '孙明明': './assets/people/sun-mingming.jpeg',
+    '王忠': './assets/people/wang-zhong.jpg',
+    '王雅晴': './assets/people/wang-yaqing.jpg',
+    '赵鑫': './assets/people/zhao-xin.png',
+    '邵佳佳': './assets/people/shao-jiajia.jpg',
+    '吴双': './assets/people/wu-shuang.jpg',
+    '李京艳': './assets/people/li-jingyan.jpg',
+    '宋丛威': './assets/people/song-congwei.jpg',
+    '谢海华': './assets/people/xie-haihua.jpg',
+    '宋洁博': './assets/people/song-jiebo.jpg',
+    '张立平': './assets/people/zhang-liping.jpg',
+    '何苗': './assets/people/he-miao.jpg',
+    '冯琦': './assets/people/feng-qi.jpg',
+    '苏伟栋': './assets/people/su-weidong.jpg',
+    '关玲永': './assets/people/guan-lingyong.jpeg',
+    '张航': './assets/people/zhang-hang.jpg',
+    '汪琼枝': './assets/people/wang-qiongzhi.jpeg'
+  };
+
+  document.querySelectorAll('.org-person,.faculty-card').forEach(card => {
+    const heading = card.querySelector('h2,h3');
+    const name = heading?.textContent.trim();
+    const localSrc = localPortraits[name];
+    const avatar = card.querySelector('.org-avatar');
+    if (!name || !localSrc || !avatar) return;
+
+    let img = avatar.querySelector('img');
+    const fallback = avatar.querySelector('.org-avatar-fallback');
+    const remoteSrc = img?.getAttribute('src') || '';
+
+    if (!img) {
+      img = document.createElement('img');
+      img.alt = name;
+      avatar.insertBefore(img, fallback || avatar.firstChild);
+    }
+
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.hidden = false;
+    if (fallback) fallback.hidden = true;
+
+    let triedRemote = false;
+    img.onerror = () => {
+      if (!triedRemote && remoteSrc && /^https?:\/\//i.test(remoteSrc)) {
+        triedRemote = true;
+        img.src = remoteSrc;
+        return;
+      }
+      img.hidden = true;
+      if (fallback) fallback.hidden = false;
+    };
+    img.src = localSrc;
+  });
+}

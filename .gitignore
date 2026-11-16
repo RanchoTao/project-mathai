@@ -1,0 +1,10 @@
+# Internal working documents — never deploy
+*.docx
+*.doc
+*.xlsx
+*.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+node_modules/

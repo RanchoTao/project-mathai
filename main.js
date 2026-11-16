@@ -1,50 +1,3 @@
-const SITE_IDENTITY = {
-  instituteName: '北京雁栖湖应用数学研究院',
-  collegeEmail: 'mathai@bimsa.cn'
-};
-
-const normalizeSiteIdentity = () => {
-  const replaceIdentity = (value = '') => value
-    .replaceAll('北京应用数学研究院', SITE_IDENTITY.instituteName)
-    .replaceAll('北京应用数学院', SITE_IDENTITY.instituteName)
-    .replaceAll('administration@bimsa.cn', SITE_IDENTITY.collegeEmail);
-
-  document.title = replaceIdentity(document.title);
-
-  const description = document.querySelector('meta[name="description"]');
-  if (description) description.setAttribute('content', replaceIdentity(description.getAttribute('content') || ''));
-
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode);
-  textNodes.forEach(node => {
-    const updated = replaceIdentity(node.nodeValue || '');
-    if (updated !== node.nodeValue) node.nodeValue = updated;
-  });
-
-  document.querySelectorAll('[href],[title],[aria-label],[alt]').forEach(el => {
-    ['href', 'title', 'aria-label', 'alt'].forEach(attr => {
-      if (!el.hasAttribute(attr)) return;
-      const value = el.getAttribute(attr) || '';
-      const updated = replaceIdentity(value);
-      if (updated !== value) el.setAttribute(attr, updated);
-    });
-  });
-
-  document.querySelectorAll('.brand-copy small,.footer-brand span').forEach(el => {
-    el.textContent = SITE_IDENTITY.instituteName;
-  });
-
-  document.querySelectorAll('.footer-contact a[href^="mailto:"]').forEach(a => {
-    if ((a.textContent || '').includes('administration@bimsa.cn') || a.getAttribute('href')?.includes('administration@bimsa.cn')) {
-      a.textContent = SITE_IDENTITY.collegeEmail;
-      a.href = `mailto:${SITE_IDENTITY.collegeEmail}`;
-    }
-  });
-};
-
-normalizeSiteIdentity();
-
 const header = document.querySelector('.site-header');
 const menuBtn = document.getElementById('menuBtn');
 const drawer = document.getElementById('mobileDrawer');
@@ -54,7 +7,6 @@ const searchClose = document.getElementById('searchClose');
 const siteSearch = document.getElementById('siteSearch');
 const searchSubmit = document.getElementById('searchSubmit');
 const searchHint = document.getElementById('searchHint');
-const langBtn = document.getElementById('langBtn');
 
 if (!document.querySelector('link[href$="nav.css"]')) {
   const navStyle = document.createElement('link');
@@ -189,32 +141,62 @@ window.addEventListener('keydown', e => {
   }
 });
 
+const SITE_INDEX = [
+  ['首页', './', '学院 首页 数学 人工智能 科研 资讯 活动'],
+  ...NAV_GROUPS.flatMap(group => group.items.map(([label, href]) => [label, href, `${group.title} ${group.intro}`]))
+];
+
+let searchResults = null;
+const renderResults = (items) => {
+  if (!searchHint) return;
+  if (!searchResults) {
+    searchResults = document.createElement('div');
+    searchResults.className = 'search-results';
+    searchHint.after(searchResults);
+  }
+  searchResults.innerHTML = items.map(([label, href, note]) =>
+    `<a href="${href}"><strong>${label}</strong><span>${note}</span></a>`).join('');
+};
+
 const runSearch = () => {
   if (!siteSearch || !searchHint) return;
-  const q = siteSearch.value.trim().toLowerCase();
+  const raw = siteSearch.value.trim();
+  const q = raw.toLowerCase();
+  renderResults([]);
   if (!q) {
     searchHint.textContent = '请输入关键词，例如：学院、课程、活动、招生';
     return;
   }
-  const sections = [...document.querySelectorAll('main section')];
-  const hit = sections.find(s => s.textContent.toLowerCase().includes(q));
-  if (hit) {
+
+  const pageHits = SITE_INDEX
+    .filter(([label, , keywords]) => `${label} ${keywords}`.toLowerCase().includes(q))
+    .sort((a, b) => Number(b[0].toLowerCase().includes(q)) - Number(a[0].toLowerCase().includes(q)));
+  const sectionHit = [...document.querySelectorAll('main section')].find(s => s.textContent.toLowerCase().includes(q));
+
+  if (sectionHit && !pageHits.length) {
     setSearch(false);
-    hit.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    searchHint.textContent = '可搜索：学院、课程、活动、招生';
+    sectionHit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+
+  const results = pageHits.map(([label, href, keywords]) => [label, href, keywords.split(' ')[0]]);
+  if (sectionHit) results.unshift(['本页内容', `#${sectionHit.id || ''}`, '在当前页面中找到匹配内容']);
+
+  if (results.length) {
+    searchHint.textContent = `找到 ${results.length} 个相关结果`;
+    renderResults(results);
+    searchResults.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      setSearch(false);
+      sectionHit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
   } else {
-    searchHint.textContent = `未找到“${siteSearch.value.trim()}”，请尝试其他关键词。`;
+    searchHint.textContent = `未找到“${raw}”，请尝试其他关键词。`;
   }
 };
 
 if (searchSubmit) searchSubmit.addEventListener('click', runSearch);
 if (siteSearch) siteSearch.addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
-
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    langBtn.textContent = langBtn.textContent === 'EN' ? '中' : 'EN';
-  });
-}
 
 const updateHeader = () => {
   if (!header) return;
@@ -240,8 +222,12 @@ if ('IntersectionObserver' in window) {
 
 const filterButtons = document.querySelectorAll('.news-tabs button');
 filterButtons.forEach(btn => btn.addEventListener('click', () => {
-  filterButtons.forEach(b => b.classList.remove('active'));
+  filterButtons.forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
   btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
   const filter = btn.dataset.filter;
   document.querySelectorAll('[data-category]').forEach(item => {
     item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);

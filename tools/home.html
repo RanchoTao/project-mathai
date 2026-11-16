@@ -1,0 +1,288 @@
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero" aria-roledescription="carousel" aria-label="学院焦点">
+      <div class="hero-slides">
+        <div class="hero-slide is-active" aria-hidden="false">
+          <img src="https://bimsa.net/imsc/img/album/1_5.jpg" alt="雁栖湖园区航拍" fetchpriority="high" />
+        </div>
+        <div class="hero-slide" aria-hidden="true">
+          <div class="hero-art">{{ART_HERO}}</div>
+        </div>
+        <div class="hero-slide" aria-hidden="true">
+          <img src="https://bimsa.net/img/bimsa/bimsa_07.jpg" alt="北京雁栖湖应用数学研究院园区建筑" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="hero-copy-inner">
+          <div class="hero-text is-active">
+            <span class="hero-kicker">School of Mathematics &amp; AI</span>
+            <h1>数学塑造智能<br />智能拓展数学</h1>
+            <p>面向数学基础、人工智能、科学计算与交叉应用，探索下一代智能科学的理论与方法。</p>
+            <div class="hero-cta"><a class="btn btn-gold" href="./about.html">走进学院</a><a class="btn btn-ghost" href="./admissions.html">招生信息</a></div>
+          </div>
+          <div class="hero-text">
+            <span class="hero-kicker">Research</span>
+            <div class="h1" role="heading" aria-level="2">从数学基础<br />到智能系统</div>
+            <p>数学基础、人工智能与科学智能三大方向相互连接，形成理论、模型与应用贯通的研究生态。</p>
+            <div class="hero-cta"><a class="btn btn-gold" href="./research-results.html">科研动态</a><a class="btn btn-ghost" href="./academic-events.html">学术活动</a></div>
+          </div>
+          <div class="hero-text">
+            <span class="hero-kicker">Yanqi Lake Campus</span>
+            <div class="h1" role="heading" aria-level="2">以研究问题组织学习<br />以数学训练建立能力</div>
+            <p>依托研究院国际化学术环境，鼓励学生尽早进入研究组、研讨班与项目制学习。</p>
+            <div class="hero-cta"><a class="btn btn-gold" href="./courses.html">学院课程</a><a class="btn btn-ghost" href="./org-structure.html">组织架构</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
+
+      <div class="hero-controls">
+        <div class="hero-count" aria-live="polite"><b id="heroNow">01</b>/ 03</div>
+        <div class="hero-dots" role="tablist" aria-label="切换焦点">
+          <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="第 1 张"></button>
+          <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="第 2 张"></button>
+          <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="第 3 张"></button>
+        </div>
+        <div class="hero-arrows">
+          <button class="hero-arrow" type="button" data-dir="-1" aria-label="上一张"><svg><use href="#i-left"/></svg></button>
+          <button class="hero-arrow" type="button" data-dir="1" aria-label="下一张"><svg><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+
+      <div class="quick">
+        <div class="quick-inner">
+          <div class="quick-box">
+            <div class="quick-label"><small>QUICK EXPLORE</small>快速探索</div>
+            <form class="quick-form" id="quickForm" role="search">
+              <label class="sr-only" for="quickInput">搜索本站</label>
+              <input id="quickInput" type="search" placeholder="搜索课程、学术活动、招生信息……" autocomplete="off" />
+              <button type="submit" aria-label="搜索"><svg><use href="#i-search"/></svg></button>
+            </form>
+            <div class="quick-tags"><a href="./admissions.html">招生信息</a><a href="./courses.html">学院课程</a><a href="./academic-events.html">学术活动</a><a href="./faculty.html">师资团队</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWS ============ -->
+    <section class="section dot-bg" id="news">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-title">
+            <div><span class="en">News</span><h2>学院资讯</h2></div>
+            <p>记录学院的科研进展、学术交流与人才培养动态。</p>
+          </div>
+          <a class="more-btn" href="./news.html">View more<i aria-hidden="true"></i></a>
+        </div>
+
+        <div class="news-grid">
+          <div class="news-stage reveal" id="newsStage" aria-live="polite">
+            <a class="news-slide is-active" href="./news.html">
+              <img src="https://bimsa.net/imsc/img/album/1_5.jpg" alt="" loading="lazy" />
+              <div class="news-cap"><span class="tag">科研</span><h3>从 Scaling 走向数据高效的 Agentic Learning：探索智能体学习的新研究框架</h3></div>
+            </a>
+            <a class="news-slide" href="./news.html">
+              <i class="cover gold" data-glyph="Ψ"></i>
+              <div class="news-cap"><span class="tag">科研</span><h3>当材料科学遇见数学：如何理解复杂材料</h3></div>
+            </a>
+            <a class="news-slide" href="./news.html">
+              <i class="cover" data-glyph="∫"></i>
+              <div class="news-cap"><span class="tag">科研</span><h3>BIMSA 团队在国际数学期刊发表两项重要研究成果</h3></div>
+            </a>
+            <a class="news-slide" href="./news.html">
+              <img src="https://bimsa.net/img/bimsa/bimsa_07.jpg" alt="" loading="lazy" />
+              <div class="news-cap"><span class="tag">活动</span><h3>Beijing Journal of Pure and Applied Mathematics 新一期发布</h3></div>
+            </a>
+            <a class="news-slide" href="./news.html">
+              <i class="cover deep" data-glyph="ℏ"></i>
+              <div class="news-cap"><span class="tag">活动</span><h3>第四届理论物理与新技术国际会议</h3></div>
+            </a>
+            <div class="news-stage-dots" aria-hidden="true"></div>
+          </div>
+
+          <div class="news-list reveal d1">
+            <div class="news-tabs" role="tablist" aria-label="资讯分类">
+              <button class="active" type="button" data-filter="all" role="tab" aria-selected="true">全部</button>
+              <button type="button" data-filter="research" role="tab" aria-selected="false">科研</button>
+              <button type="button" data-filter="activity" role="tab" aria-selected="false">活动</button>
+            </div>
+            <a class="news-item is-active" href="./news.html" data-category="research" data-slide="0">
+              <div class="news-date"><b>10</b><span>2026.06</span></div>
+              <div><strong>从 Scaling 走向数据高效的 Agentic Learning：探索智能体学习的新研究框架</strong><em>科研</em></div>
+            </a>
+            <a class="news-item" href="./news.html" data-category="research" data-slide="1">
+              <div class="news-date"><b>25</b><span>2026.06</span></div>
+              <div><strong>当材料科学遇见数学：如何理解复杂材料</strong><em>科研</em></div>
+            </a>
+            <a class="news-item" href="./news.html" data-category="research" data-slide="2">
+              <div class="news-date"><b>22</b><span>2026.06</span></div>
+              <div><strong>BIMSA 团队在国际数学期刊发表两项重要研究成果</strong><em>科研</em></div>
+            </a>
+            <a class="news-item" href="./news.html" data-category="activity" data-slide="3">
+              <div class="news-date"><b>26</b><span>2026.05</span></div>
+              <div><strong>Beijing Journal of Pure and Applied Mathematics 新一期发布</strong><em>活动</em></div>
+            </a>
+            <a class="news-item" href="./news.html" data-category="activity" data-slide="4">
+              <div class="news-date"><b>24</b><span>2026.04</span></div>
+              <div><strong>第四届理论物理与新技术国际会议</strong><em>活动</em></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section class="section events on-dark" id="events">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-title">
+            <div><span class="en">Calendar</span><h2>学术活动</h2></div>
+            <p>课程、研讨会与学术讲座，向全院师生开放。</p>
+          </div>
+          <a class="more-btn" href="./academic-events.html">View more<i aria-hidden="true"></i></a>
+        </div>
+
+        <div class="event-bar reveal">
+          <div class="event-tabs" role="tablist" aria-label="活动类型">
+            <button class="active" type="button" data-type="all" role="tab" aria-selected="true">全部</button>
+            <button type="button" data-type="course" role="tab" aria-selected="false">课程</button>
+            <button type="button" data-type="workshop" role="tab" aria-selected="false">研讨会</button>
+          </div>
+          <div class="rail-arrows">
+            <button class="rail-arrow" type="button" data-dir="-1" aria-label="向左滚动"><svg><use href="#i-left"/></svg></button>
+            <button class="rail-arrow" type="button" data-dir="1" aria-label="向右滚动"><svg><use href="#i-right"/></svg></button>
+          </div>
+        </div>
+
+        <div class="event-rail reveal d1" id="eventRail" tabindex="0" aria-label="学术活动列表">
+          <a class="poster" href="./academic-events.html" data-type="course" data-glyph="ℛ">
+            <div class="poster-date"><b>24</b><span>AUG 2026</span></div>
+            <span class="poster-type">课程 · Course</span>
+            <h3>Riemann Surfaces</h3>
+            <p>黎曼曲面专题课程</p>
+            <div class="poster-meta"><span><svg><use href="#i-pin"/></svg>雁栖湖园区</span><span><svg><use href="#i-clock"/></svg>时间待公布</span></div>
+          </a>
+          <a class="poster" href="./academic-events.html" data-type="workshop" data-glyph="⊗">
+            <div class="poster-date"><b>24</b><span>AUG 2026</span></div>
+            <span class="poster-type">研讨会 · Workshop</span>
+            <h3>Quantum Theory and Operator Theory 2026</h3>
+            <p>量子理论与算子理论研讨会</p>
+            <div class="poster-meta"><span><svg><use href="#i-pin"/></svg>BIMSA</span><span><svg><use href="#i-clock"/></svg>时间待公布</span></div>
+          </a>
+          <a class="poster" href="./academic-events.html" data-type="course" data-glyph="𝒩">
+            <div class="poster-date"><b>31</b><span>AUG 2026</span></div>
+            <span class="poster-type">课程 · Course</span>
+            <h3>Information, Networks, and Knowledge Production</h3>
+            <p>信息、网络与知识生产</p>
+            <div class="poster-meta"><span><svg><use href="#i-pin"/></svg>雁栖湖园区</span><span><svg><use href="#i-clock"/></svg>时间待公布</span></div>
+          </a>
+          <a class="poster poster-more" href="./academic-events.html" data-type="all" data-glyph="+">
+            <div class="poster-date"><b>All</b></div>
+            <span class="poster-type">日历 · Calendar</span>
+            <h3>查看全部学术活动</h3>
+            <p>讲座、研讨会与专题课程完整日历</p>
+            <div class="poster-meta"><span>进入学术活动 →</span></div>
+          </a>
+        </div>
+        <div class="rail-progress" aria-hidden="true"><i id="railBar"></i></div>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section class="section" id="research">
+      <div class="wrap">
+        <div class="research-grid">
+          <div class="research-intro reveal">
+            <div class="sec-title" style="margin-bottom:28px"><div><span class="en">Research</span><h2>科研方向</h2></div></div>
+            <p>学院以数学基础与人工智能前沿的深度融合为核心，让数学成为智能系统的结构语言，让人工智能成为数学研究的新型工具。</p>
+            <div class="r-tabs" role="tablist" aria-label="科研方向">
+              <button class="r-tab active" type="button" role="tab" aria-selected="true" aria-controls="rp-0" id="rt-0"><span class="no">01</span><strong>数学基础</strong><span class="arrow"></span></button>
+              <button class="r-tab" type="button" role="tab" aria-selected="false" aria-controls="rp-1" id="rt-1"><span class="no">02</span><strong>人工智能</strong><span class="arrow"></span></button>
+              <button class="r-tab" type="button" role="tab" aria-selected="false" aria-controls="rp-2" id="rt-2"><span class="no">03</span><strong>科学智能</strong><span class="arrow"></span></button>
+            </div>
+          </div>
+          <div class="r-stage reveal d1">
+            <div class="r-panel active" role="tabpanel" id="rp-0" aria-labelledby="rt-0">
+              <div class="r-art">{{ART_MATH}}</div>
+              <span class="en">Mathematical Foundations</span>
+              <h3>数学基础</h3>
+              <p>概率与统计、优化、偏微分方程、几何与代数，为智能算法建立可解释、可验证的理论底座。</p>
+              <div class="r-chips"><span>概率统计</span><span>优化理论</span><span>偏微分方程</span><span>几何与代数</span></div>
+            </div>
+            <div class="r-panel" role="tabpanel" id="rp-1" aria-labelledby="rt-1">
+              <div class="r-art">{{ART_AI}}</div>
+              <span class="en">Artificial Intelligence</span>
+              <h3>人工智能</h3>
+              <p>机器学习、基础模型、智能体与学习理论，研究高效、可靠并具有推理能力的下一代智能系统。</p>
+              <div class="r-chips"><span>机器学习</span><span>基础模型</span><span>智能体</span><span>学习理论</span></div>
+            </div>
+            <div class="r-panel" role="tabpanel" id="rp-2" aria-labelledby="rt-2">
+              <div class="r-art">{{ART_SCI}}</div>
+              <span class="en">AI for Science</span>
+              <h3>科学智能</h3>
+              <p>面向物理、材料、生命与复杂系统，将数据驱动方法与数学建模、数值计算、多尺度方法协同起来。</p>
+              <div class="r-chips"><span>物理与材料</span><span>生命科学</span><span>复杂系统</span><span>数值计算</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FACULTY ============ -->
+    <section class="section tint" id="faculty">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-title">
+            <div><span class="en">Faculty</span><h2>师资力量</h2></div>
+            <p>学院治理与课程教学团队。</p>
+          </div>
+          <a class="more-btn" href="./org-structure.html">View more<i aria-hidden="true"></i></a>
+        </div>
+        <div class="faculty-rail reveal d1" tabindex="0" aria-label="师资列表">
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/yau-shingtung.webp" alt="" loading="lazy" /></div><h3>丘成桐</h3><p>名誉院长</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/wu-rongling.webp" alt="" loading="lazy" /></div><h3>邬荣领</h3><p>院长</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/sun-mingming.webp" alt="" loading="lazy" /></div><h3>孙明明</h3><p>教学委员会主任</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/wang-zhong.webp" alt="" loading="lazy" /></div><h3>王忠</h3><p>顾问 · 任职教师</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/wang-yaqing.webp" alt="" loading="lazy" /></div><h3>王雅晴</h3><p>顾问</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/zhao-xin.webp" alt="" loading="lazy" /></div><h3>赵鑫</h3><p>顾问</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/shao-jiajia.webp" alt="" loading="lazy" /></div><h3>邵佳佳</h3><p>顾问</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/li-jingyan.webp" alt="" loading="lazy" /></div><h3>李京艳</h3><p>任职教师</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/song-congwei.webp" alt="" loading="lazy" /></div><h3>宋丛威</h3><p>任职教师</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/xie-haihua.webp" alt="" loading="lazy" /></div><h3>谢海华</h3><p>任职教师</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/zhang-liping.webp" alt="" loading="lazy" /></div><h3>张立平</h3><p>任职教师</p></a>
+          <a class="person" href="./org-structure.html"><div class="person-photo"><img src="./assets/people/feng-qi.webp" alt="" loading="lazy" /></div><h3>冯琦</h3><p>任职教师</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section edu on-dark" id="education">
+      <img class="edu-bg" src="https://bimsa.net/img/bimsa/bimsa_07.jpg" alt="" loading="lazy" />
+      <div class="wrap">
+        <div class="edu-grid">
+          <div class="edu-lead reveal">
+            <div class="sec-title" style="margin-bottom:28px"><div><span class="en">Education</span><h2>人才培养</h2></div></div>
+            <p>课程模块覆盖数学基础、计算方法、机器学习与科研训练；鼓励学生尽早进入研究组、研讨班和项目制学习。</p>
+            <a class="more-btn" href="./courses.html">View more<i aria-hidden="true"></i></a>
+          </div>
+          <div class="edu-tiles reveal d1">
+            <a class="edu-tile" href="./courses.html"><span class="num">01</span><h3>学院课程</h3><p>按课程类别、学期与层级组织的课程体系。</p><span class="go">EXPLORE →</span></a>
+            <a class="edu-tile" href="./admissions.html"><span class="num">02</span><h3>招生信息</h3><p>招生项目、申请要求与时间节点。</p><span class="go">EXPLORE →</span></a>
+            <a class="edu-tile" href="./teaching-calendar.html"><span class="num">03</span><h3>教学日历</h3><p>学期周次、课程安排与重要教学节点。</p><span class="go">EXPLORE →</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SLOGAN ============ -->
+    <section class="slogan" aria-label="学院理念">
+      <div class="wrap reveal">
+        <div class="formula" aria-hidden="true"><span>e<sup>iπ</sup> + 1 = 0</span></div>
+        <h2><span class="l">以数学理解世界</span><span class="dot"> · </span><span class="l">以智能扩展可能</span></h2>
+        <p>From rigorous foundations to intelligent discovery.</p>
+      </div>
+    </section>
+  </main>

@@ -109,7 +109,9 @@ img{display:block;max-width:100%}
 .hero-copy-inner{max-width:720px}
 .hero-kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--latin);font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2)}
 .hero-kicker::before{content:"";width:40px;height:1px;background:currentColor}
-.hero-copy h1,.hero-copy .h1{margin:22px 0 22px;font-family:var(--serif);font-size:clamp(40px,5.6vw,76px);font-weight:600;line-height:1.16;letter-spacing:.06em}
+.hero-copy h1,.hero-copy .h1{margin:22px 0 22px;font-family:var(--serif);font-size:clamp(28px,7.8vw,72px);font-weight:600;line-height:1.16;letter-spacing:.06em}
+/* One line per span, never broken mid-phrase; 72px cap keeps 9 CJK chars inside the 720px column. */
+.hero-copy .line{display:block;white-space:nowrap}
 .hero-copy p{margin:0;max-width:560px;font-size:16px;line-height:1.9;color:rgba(255,255,255,.82)}
 .hero-copy .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
 .hero-text{display:none}
